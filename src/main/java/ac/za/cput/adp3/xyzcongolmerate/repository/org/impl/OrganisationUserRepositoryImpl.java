@@ -20,34 +20,48 @@ public class OrganisationUserRepositoryImpl implements OrganisationUserRepositor
         return organisationUserRepository;
     }
 
-    //TODO: Implement body
+    private OrganisationUser findOrgUser(String orgCode,String userEmail){
+        return this.organisationUserDB.stream()
+                .filter(organisationUser -> organisationUser.getOrgCode().trim().equalsIgnoreCase(orgCode)
+                        && organisationUser.getUserEmail().trim().equalsIgnoreCase(userEmail))
+                .findAny()
+                .orElse(null);
+    }
     @Override
     public OrganisationUser create(OrganisationUser organisationUser) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.organisationUserDB.add(organisationUser);
+        return organisationUser;
     }
 
-    //TODO: Implement body
+
     @Override
     public OrganisationUser read(String orgCode, String userEmail) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        OrganisationUser organisationUser = findOrgUser(orgCode,userEmail);
+        return organisationUser;
     }
 
-    //TODO: Implement body
+
     @Override
     public OrganisationUser update(OrganisationUser organisationUser) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        OrganisationUser toDelete = findOrgUser(organisationUser.getOrgCode(),organisationUser.getUserEmail());
+        if (toDelete != null){
+            this.organisationUserDB.remove(toDelete);
+            return create(organisationUser);
+        }
+        return null;
     }
 
-    //TODO: Implement body
+
     @Override
     public void delete(String orgCode, String userEmail) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        OrganisationUser organisationUser = findOrgUser(orgCode,userEmail);
+        if (organisationUser != null)this.organisationUserDB.remove(organisationUser);
     }
 
-    //TODO: Implement body
+
     @Override
     public Set<OrganisationUser> getAll() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.organisationUserDB;
     }
 
 

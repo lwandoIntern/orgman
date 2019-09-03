@@ -9,7 +9,10 @@ public class RoleFactory {
 
     //TODO: implement method body ONLY!
     public static Role buildRole(String roleName) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new Role.Builder()
+                .roleId(SUFFIX)
+                .roleName(roleName)
+                .build();
         /**
          * Your implementation goes here
          * INSTRUCTIONS

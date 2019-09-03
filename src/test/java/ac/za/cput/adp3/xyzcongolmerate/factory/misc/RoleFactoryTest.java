@@ -1,15 +1,16 @@
 package ac.za.cput.adp3.xyzcongolmerate.factory.misc;
 
+import ac.za.cput.adp3.xyzcongolmerate.domain.misc.Role;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class RoleFactoryTest {
 
-    //TODO: implement method body ONLY!
+
     @Test
     public void buildRole() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Role role = RoleFactory.buildRole("Supervisor");
         /**
          * Your implementation goes here
          *
@@ -19,5 +20,7 @@ public class RoleFactoryTest {
          * 3. Test the RoleFactory class
          * 4. Assert that the id is generated.
          */
+        assertEquals(role,role);
+        assertNotNull(role.getRoleId());
     }
 }

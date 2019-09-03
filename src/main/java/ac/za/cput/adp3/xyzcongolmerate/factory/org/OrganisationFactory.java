@@ -9,7 +9,10 @@ public class OrganisationFactory {
 
     //TODO: implement method body ONLY!
     public static Organisation buildOrganisation(String organisationName) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new Organisation.Builder()
+                .orgCode(SUFFIX)
+                .orgName(organisationName)
+                .build();
         /**
          * Your implementation goes here
          * INSTRUCTIONS
