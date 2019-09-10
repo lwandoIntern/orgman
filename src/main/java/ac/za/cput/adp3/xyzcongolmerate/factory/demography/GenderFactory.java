@@ -9,8 +9,9 @@ public class GenderFactory {
 
     //TODO: implement method body ONLY!
     public static Gender buildGender(String genderDescription) {
+        String id = Helper.generateRandomGivenSuffic(SUFFIX);
         return new Gender.Builder()
-                .genderId(SUFFIX)
+                .genderId(id)
                 .genderDescription(genderDescription)
                 .build();
         /**
